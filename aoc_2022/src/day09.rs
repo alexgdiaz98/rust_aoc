@@ -41,12 +41,8 @@ pub fn day09(input_path: &Path) -> (String, String) {
                     _ => knots[knot_i],
                 };
             }
-            if p1.get(&knots[1]) == None {
-                p1.insert(knots[1]);
-            }
-            if p2.get(&knots[9]) == None {
-                p2.insert(knots[9]);
-            }
+            p1.insert(knots[1]);
+            p2.insert(knots[KNOT_COUNT - 1]);
         }
     }
     (p1.len().to_string(), p2.len().to_string())
