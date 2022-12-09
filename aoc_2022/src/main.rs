@@ -12,12 +12,14 @@ use crate::day05::day05;
 use crate::day06::day06;
 use crate::day07::day07;
 use crate::day08::day08;
+use crate::day09::day09;
 
 mod day01;
 mod day05;
 mod day06;
 mod day07;
 mod day08;
+mod day09;
 mod template;
 
 fn main() {
@@ -49,6 +51,7 @@ fn main() {
         6 => day06(input_path),
         7 => day07(input_path),
         8 => day08(input_path),
+        9 => day09(input_path),
         _ => {
             eprintln!("Invalid day: {}", day);
             exit(-1);
