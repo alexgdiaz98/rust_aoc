@@ -25,8 +25,6 @@ pub fn day11(input_path: &Path) -> (String, String) {
             }
         })
     });
-    println!("Rows: {:?}", empty_rows);
-    println!("Cols: {:?}", empty_cols);
     galaxies.iter().combinations(2).for_each(|c| {
         let [a, b]: [&Coord; 2] = c.try_into().unwrap();
         let mut distance = a.hamming_distance(b);
