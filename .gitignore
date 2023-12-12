@@ -1,1 +1,5 @@
-/aoc_2022/target
+.DS_Store
+.idea/
+**/target/*
+**/inputs/*
+**/test_inputs/*
