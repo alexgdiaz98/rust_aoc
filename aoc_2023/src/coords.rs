@@ -39,10 +39,12 @@ impl Display for Coord2D {
 }
 
 impl Coord2D {
-    pub fn hamming_distance(&self, rhs: &Self) -> isize {
+    #[allow(dead_code)]
+    pub fn manhattan_distance(&self, rhs: &Self) -> isize {
         (self.0 - rhs.0).abs() + (self.1 - rhs.1).abs()
     }
 
+    #[allow(dead_code)]
     pub fn magnitude(&self) -> isize {
         self.0.abs() + self.1.abs()
     }
@@ -86,10 +88,12 @@ impl Display for Coord3D {
 }
 
 impl Coord3D {
-    pub fn hamming_distance(&self, rhs: &Self) -> isize {
+    #[allow(dead_code)]
+    pub fn manhattan_distance(&self, rhs: &Self) -> isize {
         (self.0 - rhs.0).abs() + (self.1 - rhs.1).abs() + (self.2 - rhs.2).abs()
     }
 
+    #[allow(dead_code)]
     pub fn magnitude(&self) -> isize {
         self.0.abs() + self.1.abs() + self.2.abs()
     }

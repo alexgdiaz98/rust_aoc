@@ -27,7 +27,7 @@ pub fn day11(input_path: &Path) -> (String, String) {
     });
     galaxies.iter().combinations(2).for_each(|c| {
         let [a, b]: [&Coord; 2] = c.try_into().unwrap();
-        let mut distance = a.hamming_distance(b);
+        let mut distance = a.manhattan_distance(b);
         let min_row = a.0.min(b.0);
         let max_row = a.0.max(b.0);
         let min_col = a.1.min(b.1);
