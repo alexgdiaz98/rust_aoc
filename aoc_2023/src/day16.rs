@@ -59,36 +59,13 @@ pub fn day16(input_path: &Path) -> (String, String) {
         }
     }
     let p1 = calculate_energized(&grid, (Coord(0, 0), RIGHT));
-    let mut max_energized = 0;
-    let mut max_energized_beam = (Coord(0, 0), RIGHT);
-    for i in 0..height {
-        let mut initial_coord = Coord(i as isize, 0);
-        let mut energized = calculate_energized(&grid, (initial_coord, RIGHT));
-        if energized > max_energized {
-            max_energized = energized;
-            max_energized_beam = (initial_coord, RIGHT);
-        }
-        initial_coord = Coord(i as isize, width as isize - 1);
-        energized = calculate_energized(&grid, (initial_coord, LEFT));
-        if energized > max_energized {
-            max_energized = energized;
-            max_energized_beam = (initial_coord, LEFT);
-        }
-    }
-    for j in 0..width {
-        let mut initial_coord = Coord(0, j as isize);
-        let mut energized = calculate_energized(&grid, (initial_coord, DOWN));
-        if energized > max_energized {
-            max_energized = energized;
-            max_energized_beam = (initial_coord, DOWN);
-        }
-        initial_coord = Coord(height as isize - 1, j as isize);
-        energized = calculate_energized(&grid, (initial_coord, UP));
-        if energized > max_energized {
-            max_energized = energized;
-            max_energized_beam = (initial_coord, UP);
-        }
-    }
-    let p2 = max_energized;
+    let p2 = (0..height)
+        .map(|i| (Coord(i as isize, 0), RIGHT))
+        .chain((0..height).map(|i| (Coord(i as isize, width as isize - 1), LEFT)))
+        .chain((0..width).map(|j| (Coord(0, j as isize), DOWN)))
+        .chain((0..width).map(|j| (Coord(height as isize - 1, j as isize), UP)))
+        .map(|beam| calculate_energized(&grid, beam))
+        .reduce(usize::max)
+        .unwrap();
     (p1.to_string(), p2.to_string())
 }
