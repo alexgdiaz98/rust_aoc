@@ -1,7 +1,7 @@
-use crate::coords::{Coord2D as Coord};
+use crate::coords::Coord2D as Coord;
+use itertools::Itertools;
 use std::collections::{HashMap, HashSet, VecDeque};
 use std::{fs::read_to_string, path::Path};
-use itertools::Itertools;
 
 const LEFT: Coord = Coord(0, -1);
 const RIGHT: Coord = Coord(0, 1);
@@ -34,10 +34,9 @@ fn calculate_energized(grid: &HashMap<Coord, char>, initial_beam: (Coord, Coord)
             energized.insert(beam_coord);
         }
         if let Some(&c) = grid.get(&beam_coord) {
-            new_directions(beam_direction, c).iter()
-                .filter(|&beam2| {
-                    !already_considered.contains(&(beam_coord + *beam2, *beam2))
-                })
+            new_directions(beam_direction, c)
+                .iter()
+                .filter(|&beam2| !already_considered.contains(&(beam_coord + *beam2, *beam2)))
                 .for_each(|&beam2| {
                     beams.push_back((beam_coord + beam2, beam2));
                 });
