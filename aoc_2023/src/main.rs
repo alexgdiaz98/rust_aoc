@@ -13,6 +13,7 @@ mod day08;
 mod day09;
 mod day10;
 mod day11;
+mod day16;
 mod template;
 mod coords;
 
@@ -32,6 +33,7 @@ use crate::day08::day08;
 use crate::day09::day09;
 use crate::day10::day10;
 use crate::day11::day11;
+use crate::day16::day16;
 
 fn main() {
     let args: Vec<_> = env::args_os().skip(1).collect();
@@ -69,6 +71,7 @@ fn main() {
         9 => day09(input_path),
         10 => day10(input_path),
         11 => day11(input_path),
+        16 => day16(input_path),
         _ => {
             eprintln!("Invalid day: {}", day);
             exit(-1);
